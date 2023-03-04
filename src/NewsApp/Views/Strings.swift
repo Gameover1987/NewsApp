@@ -3,6 +3,10 @@ import Foundation
 
 final class Strings {
     
+    final class Auth {
+        static let auth = "Вход"
+    }
+    
     final class News {
         static let title = "Новости"
     }

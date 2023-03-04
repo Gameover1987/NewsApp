@@ -20,6 +20,14 @@
 		80E432AB29B381CB006CEBEE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E432AA29B381CB006CEBEE /* ProfileViewController.swift */; };
 		80E432AD29B383AA006CEBEE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E432AC29B383AA006CEBEE /* Colors.swift */; };
 		80E432AF29B38AF0006CEBEE /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E432AE29B38AF0006CEBEE /* Strings.swift */; };
+		80E432B229B39BB7006CEBEE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E432B129B39BB7006CEBEE /* LoginViewController.swift */; };
+		80E432B429B3AD46006CEBEE /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E432B329B3AD46006CEBEE /* TextFieldWithPadding.swift */; };
+		80E432B729B3B10B006CEBEE /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E432B629B3B10B006CEBEE /* Fonts.swift */; };
+		80E432BC29B3BB39006CEBEE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E432BB29B3BB39006CEBEE /* LoginViewModel.swift */; };
+		80E432BE29B3C101006CEBEE /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E432BD29B3C101006CEBEE /* StringExtensions.swift */; };
+		80E432C029B3C1A1006CEBEE /* AuthorizerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E432BF29B3C1A1006CEBEE /* AuthorizerProtocol.swift */; };
+		80E432C329B3C1FF006CEBEE /* Authorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E432C229B3C1FF006CEBEE /* Authorizer.swift */; };
+		80E432C529B3C6C9006CEBEE /* ViewFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E432C429B3C6C9006CEBEE /* ViewFactoryProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +45,14 @@
 		80E432AA29B381CB006CEBEE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		80E432AC29B383AA006CEBEE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		80E432AE29B38AF0006CEBEE /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		80E432B129B39BB7006CEBEE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		80E432B329B3AD46006CEBEE /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
+		80E432B629B3B10B006CEBEE /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		80E432BB29B3BB39006CEBEE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		80E432BD29B3C101006CEBEE /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		80E432BF29B3C1A1006CEBEE /* AuthorizerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizerProtocol.swift; sourceTree = "<group>"; };
+		80E432C229B3C1FF006CEBEE /* Authorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorizer.swift; sourceTree = "<group>"; };
+		80E432C429B3C6C9006CEBEE /* ViewFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactoryProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +88,7 @@
 			children = (
 				80E4329A29B36E09006CEBEE /* Extensions */,
 				80E4329129B3604D006CEBEE /* Model */,
-				80E4329329B36077006CEBEE /* Screens */,
+				80E4329329B36077006CEBEE /* Views */,
 				80E4327A29B35EC2006CEBEE /* AppDelegate.swift */,
 				80E4328629B35EC4006CEBEE /* Assets.xcassets */,
 				80E4328B29B35EC4006CEBEE /* Info.plist */,
@@ -83,6 +99,7 @@
 		80E4329129B3604D006CEBEE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				80E432C129B3C1E4006CEBEE /* Authorization */,
 				80E4329429B363C6006CEBEE /* Network */,
 				80E4329229B36054006CEBEE /* Storage */,
 			);
@@ -97,17 +114,17 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
-		80E4329329B36077006CEBEE /* Screens */ = {
+		80E4329329B36077006CEBEE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				80E4329D29B37D6C006CEBEE /* News */,
-				80E4329E29B37E3A006CEBEE /* Map */,
-				80E4329F29B37E3F006CEBEE /* Favorites */,
-				80E432A029B37E46006CEBEE /* Profile */,
+				80E432B529B3B0E0006CEBEE /* Controls */,
+				80E432B829B3BAFD006CEBEE /* Screens */,
 				80E432AC29B383AA006CEBEE /* Colors.swift */,
 				80E432AE29B38AF0006CEBEE /* Strings.swift */,
+				80E432B629B3B10B006CEBEE /* Fonts.swift */,
+				80E432C429B3C6C9006CEBEE /* ViewFactoryProtocol.swift */,
 			);
-			path = Screens;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		80E4329429B363C6006CEBEE /* Network */ = {
@@ -131,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				80E4329B29B36E47006CEBEE /* DateExtensions.swift */,
+				80E432BD29B3C101006CEBEE /* StringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -165,6 +183,60 @@
 				80E432AA29B381CB006CEBEE /* ProfileViewController.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		80E432B029B39B75006CEBEE /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+				80E432B129B39BB7006CEBEE /* LoginViewController.swift */,
+				80E432BB29B3BB39006CEBEE /* LoginViewModel.swift */,
+			);
+			path = LoginScreen;
+			sourceTree = "<group>";
+		};
+		80E432B529B3B0E0006CEBEE /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				80E432B329B3AD46006CEBEE /* TextFieldWithPadding.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		80E432B829B3BAFD006CEBEE /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				80E432BA29B3BB0B006CEBEE /* Other */,
+				80E432B929B3BB05006CEBEE /* TabBar */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		80E432B929B3BB05006CEBEE /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				80E4329D29B37D6C006CEBEE /* News */,
+				80E4329E29B37E3A006CEBEE /* Map */,
+				80E4329F29B37E3F006CEBEE /* Favorites */,
+				80E432A029B37E46006CEBEE /* Profile */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		80E432BA29B3BB0B006CEBEE /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				80E432B029B39B75006CEBEE /* LoginScreen */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		80E432C129B3C1E4006CEBEE /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				80E432BF29B3C1A1006CEBEE /* AuthorizerProtocol.swift */,
+				80E432C229B3C1FF006CEBEE /* Authorizer.swift */,
+			);
+			path = Authorization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,16 +314,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80E432B729B3B10B006CEBEE /* Fonts.swift in Sources */,
+				80E432B229B39BB7006CEBEE /* LoginViewController.swift in Sources */,
 				80E432AD29B383AA006CEBEE /* Colors.swift in Sources */,
 				80E432A929B3819B006CEBEE /* FavoritesViewController.swift in Sources */,
+				80E432C029B3C1A1006CEBEE /* AuthorizerProtocol.swift in Sources */,
+				80E432C529B3C6C9006CEBEE /* ViewFactoryProtocol.swift in Sources */,
 				80E432AB29B381CB006CEBEE /* ProfileViewController.swift in Sources */,
+				80E432B429B3AD46006CEBEE /* TextFieldWithPadding.swift in Sources */,
 				80E4329C29B36E47006CEBEE /* DateExtensions.swift in Sources */,
 				80E4329929B367E1006CEBEE /* NewsApi.swift in Sources */,
+				80E432BE29B3C101006CEBEE /* StringExtensions.swift in Sources */,
+				80E432BC29B3BB39006CEBEE /* LoginViewModel.swift in Sources */,
 				80E4329629B363F6006CEBEE /* NewsApiProtocol.swift in Sources */,
 				80E432A229B37E78006CEBEE /* NewsViewController.swift in Sources */,
 				80E4327B29B35EC2006CEBEE /* AppDelegate.swift in Sources */,
 				80E4328529B35EC2006CEBEE /* NewsApp.xcdatamodeld in Sources */,
 				80E432AF29B38AF0006CEBEE /* Strings.swift in Sources */,
+				80E432C329B3C1FF006CEBEE /* Authorizer.swift in Sources */,
 				80E432A729B38161006CEBEE /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
