@@ -50,10 +50,18 @@ final class NewsViewController : UIViewController {
             make.centerX.equalTo(view.safeAreaLayoutGuide)
             make.centerY.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         activityIndicator.startAnimating()
         
@@ -77,6 +85,11 @@ final class NewsViewController : UIViewController {
 extension NewsViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 256
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedArticle = newsViewModel.articles[indexPath.row]
+        self.navigationController?.pushViewController(ArticleViewController(article: selectedArticle), animated: true)
     }
 }
 

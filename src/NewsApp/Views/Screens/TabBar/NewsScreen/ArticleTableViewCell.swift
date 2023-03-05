@@ -93,7 +93,7 @@ final class ArticleTableViewCell : UITableViewCell {
     }
     
     func update(by article: Article) {
-        
+        image.image = nil
         if let urlToArticleImage = article.urlToImage {
             DispatchQueue.global().async { [weak self] in
                 guard let dataFromUrl = try? Data(contentsOf: urlToArticleImage) else {return}
