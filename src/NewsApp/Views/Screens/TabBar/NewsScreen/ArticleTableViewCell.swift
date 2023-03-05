@@ -3,7 +3,7 @@ import UIKit
 
 final class ArticleTableViewCell : UITableViewCell {
     
-    static let identifier = "NewsTableViewCell"
+    static let identifier = "ArticleTableViewCell"
     
     private var article: ArticleViewModel?
     
