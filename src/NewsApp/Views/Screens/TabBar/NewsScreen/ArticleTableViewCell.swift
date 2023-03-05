@@ -5,6 +5,8 @@ final class ArticleTableViewCell : UITableViewCell {
     
     static let identifier = "NewsTableViewCell"
     
+    private var article: ArticleViewModel?
+    
     private lazy var panel: UIView = {
         let panel = UIView()
         panel.layer.cornerRadius = 22
@@ -13,7 +15,7 @@ final class ArticleTableViewCell : UITableViewCell {
         return panel
     }()
     
-    private lazy var image: UIImageView = {
+    private lazy var articleImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -29,6 +31,7 @@ final class ArticleTableViewCell : UITableViewCell {
     private lazy var heartButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "heart"), for: .normal)
+        button.tintColor = Colors.News.notLikeColor
         button.addTarget(self, action: #selector(heartImageTouched), for: .touchUpInside)
         return button
     }()
@@ -56,22 +59,22 @@ final class ArticleTableViewCell : UITableViewCell {
             make.left.right.equalTo(contentView).inset(16)
             make.top.bottom.equalTo(contentView).inset(8)
             
-            panel.addSubview(image)
-            image.snp.makeConstraints { make in
-                make.left.top.right.equalTo(image.superview!)
+            panel.addSubview(articleImage)
+            articleImage.snp.makeConstraints { make in
+                make.left.top.right.equalTo(articleImage.superview!)
                 make.height.equalTo(132)
             }
             
             panel.addSubview(dateLabel)
             dateLabel.snp.makeConstraints { make in
                 make.left.equalTo(dateLabel.superview!).inset(16)
-                make.top.equalTo(image.snp.bottom).offset(16)
+                make.top.equalTo(articleImage.snp.bottom).offset(16)
             }
             
             panel.addSubview(heartButton)
             heartButton.snp.makeConstraints { make in
                 make.right.equalTo(heartButton.superview!).inset(16)
-                make.top.equalTo(image.snp.bottom).offset(10)
+                make.top.equalTo(articleImage.snp.bottom).offset(10)
             }
             
             panel.addSubview(articleHeaderLabel)
@@ -92,27 +95,36 @@ final class ArticleTableViewCell : UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func update(by article: Article) {
-        image.image = nil
-        if let urlToArticleImage = article.urlToImage {
-            DispatchQueue.global().async { [weak self] in
-                guard let dataFromUrl = try? Data(contentsOf: urlToArticleImage) else {return}
-                guard let imageFromWeb = UIImage(data: dataFromUrl) else {return}
-                DispatchQueue.main.async { [weak self] in
-                    self?.image.image = imageFromWeb
-                }
-            }
+    func update(by article: ArticleViewModel) {
+        
+        self.article = article
+        
+        articleImage.image = nil
+        article.loadImage { [weak self] image in
+            self?.articleImage.image = image
         }
         
-        dateLabel.text = article.publishedAt.toString(format: "d MMMM")
+        dateLabel.text = article.publishedAt
         articleHeaderLabel.text = article.title
-        articleContentLabel.text = article.description
+        articleContentLabel.text = article.contents
         
-        // TODO: Check likes from CoreData
+        displayLikeStatus(articleViewModel: article)
     }
     
-    @objc func heartImageTouched() {
-        heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        heartButton.tintColor = Colors.News.likeColor
+    @objc private func heartImageTouched() {
+        guard let article = self.article else {return}
+        
+        article.addOrRemoveFromFavorites()
+        displayLikeStatus(articleViewModel: article)
+    }
+    
+    private func displayLikeStatus(articleViewModel: ArticleViewModel) {
+        if articleViewModel.isFavorite {
+            heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            heartButton.tintColor = Colors.News.likeColor
+        } else {
+            heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            heartButton.tintColor = Colors.News.notLikeColor
+        }
     }
 }

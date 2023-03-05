@@ -17,6 +17,7 @@ final class Colors {
     final class News {
         static let background = UIColor(red: 0.949, green: 0.949, blue: 0.965, alpha: 1)
         static let likeColor = UIColor(red: 1, green: 0.392, blue: 0.51, alpha: 1)
+        static let notLikeColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
     }
     
     final class Favoites {

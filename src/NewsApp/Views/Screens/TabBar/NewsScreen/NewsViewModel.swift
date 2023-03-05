@@ -4,12 +4,14 @@ import Foundation
 final class NewsViewModel {
     
     private let newsApi: NewsApiProtocol
+    private let storage: NewsAppStorageProtocol
     
-    init(newsApi: NewsApiProtocol) {
+    init(newsApi: NewsApiProtocol, storage: NewsAppStorageProtocol) {
         self.newsApi = newsApi
+        self.storage = storage
     }
     
-    var articles: [Article] = []
+    var articles: [ArticleViewModel] = []
     
     func load(completion: @escaping ((_ result: Result<[Article], Error>) -> Void)) {
         
@@ -23,7 +25,9 @@ final class NewsViewModel {
                     completion(.failure(error))
                     
                 case .success(let newsSource):
-                    self.articles = newsSource.articles
+                    self.articles = newsSource.articles.map({ article in
+                        return ArticleViewModel(article: article, storage: self.storage)
+                    })
                     completion(.success(newsSource.articles))
                 }
             }

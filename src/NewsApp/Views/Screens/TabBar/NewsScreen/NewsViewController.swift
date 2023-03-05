@@ -58,6 +58,8 @@ final class NewsViewController : UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        updateVisibleCells()
     }
     
     override func viewDidLoad() {
@@ -79,6 +81,14 @@ final class NewsViewController : UIViewController {
         }
 
         tableView.reloadData()
+    }
+    
+    private func updateVisibleCells() {
+        guard let selectedIndexPath = tableView.indexPathForSelectedRow else {return}
+        
+        let article = newsViewModel.articles[selectedIndexPath.row]
+        let cell = tableView.cellForRow(at: selectedIndexPath) as! ArticleTableViewCell
+        cell.update(by: article)
     }
 }
 

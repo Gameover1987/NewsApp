@@ -4,21 +4,9 @@ import SnapKit
 
 final class ArticleViewController : UIViewController {
     
-    private let article: Article
+    private let article: ArticleViewModel
     
-    private lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height)
-        return scrollView
-    }()
-    
-    private lazy var contentView: UIView = {
-        let view = UIView()
-        return view
-    }()
-    
-    private lazy var image: UIImageView = {
+    private lazy var articleImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -34,8 +22,9 @@ final class ArticleViewController : UIViewController {
     
     private lazy var heartButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "heart"), for: .normal)
-        //button.addTarget(self, action: #selector(heartImageTouched), for: .touchUpInside)
+        button.setImage(UIImage(systemName: "person"), for: .normal)
+        button.tintColor = Colors.News.notLikeColor
+        button.addTarget(self, action: #selector(heartButtonTouched), for: .touchUpInside)
         return button
     }()
     
@@ -53,7 +42,7 @@ final class ArticleViewController : UIViewController {
         return label
     }()
     
-    init(article: Article) {
+    init(article: ArticleViewModel) {
         self.article = article
         super.init(nibName: nil, bundle: nil)
     }
@@ -80,57 +69,61 @@ final class ArticleViewController : UIViewController {
         
         view.backgroundColor = Colors.News.background
         
-        view.addSubview(scrollView)
-        scrollView.snp.makeConstraints { make in
-            make.left.top.right.bottom.equalTo(view.safeAreaLayoutGuide)
-        }
-        
-        scrollView.addSubview(contentView)
-        
-        contentView.addSubview(image)
-        image.snp.makeConstraints { make in
-            make.left.top.equalTo(image.superview!).inset(8)
-            make.width.equalTo(view.frame.width - 8*2)
+        view.addSubview(articleImage)
+        articleImage.snp.makeConstraints { make in
+            make.left.top.right.equalTo(view.safeAreaLayoutGuide).inset(8)
             make.height.equalTo(260)
         }
     
-        contentView.addSubview(dateLabel)
+        view.addSubview(dateLabel)
         dateLabel.snp.makeConstraints { make in
-            make.left.equalTo(dateLabel.superview!).inset(16)
-            make.top.equalTo(image.snp.bottom).offset(16)
+            make.left.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.top.equalTo(articleImage.snp.bottom).offset(16)
         }
         
-        contentView.addSubview(articleHeaderLabel)
+        view.addSubview(heartButton)
+        heartButton.snp.makeConstraints { make in
+            make.right.equalTo(articleImage).inset(16)
+            make.top.equalTo(articleImage.snp.bottom).offset(10)
+        }
+        
+        view.addSubview(articleHeaderLabel)
         articleHeaderLabel.snp.makeConstraints { make in
-            make.left.equalTo(articleHeaderLabel.superview!).inset(16)
-            make.width.equalTo(view.frame.width - 8*2)
+            make.left.right.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.top.equalTo(dateLabel.snp.bottom).offset(16)
         }
-        
-        contentView.addSubview(articleContentLabel)
+
+        view.addSubview(articleContentLabel)
         articleContentLabel.snp.makeConstraints { make in
-            make.left.equalTo(articleContentLabel.superview!).inset(16)
-            make.width.equalTo(view.frame.width - 8*2)
+            make.left.right.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.top.equalTo(articleHeaderLabel.snp.bottom).offset(16)
         }
     }
     
     private func displayModel() {
-       
-        if let urlToArticleImage = article.urlToImage {
-            DispatchQueue.global().async { [weak self] in
-                guard let dataFromUrl = try? Data(contentsOf: urlToArticleImage) else {return}
-                guard let imageFromWeb = UIImage(data: dataFromUrl) else {return}
-                DispatchQueue.main.async { [weak self] in
-                    self?.image.image = imageFromWeb
-                }
-            }
-        }
-        
-        dateLabel.text = article.publishedAt.toString(format: "d MMMM")
+
+        articleImage.image = article.image
+        dateLabel.text = article.publishedAt
         articleHeaderLabel.text = article.title
-        articleContentLabel.text = article.description
+        articleContentLabel.text = article.contents
         
         title = "Статья"
+        
+        displayLikeStatus(articleViewModel: article)
+    }
+    
+    @objc private func heartButtonTouched() {
+        article.addOrRemoveFromFavorites()
+        displayLikeStatus(articleViewModel: article)
+    }
+    
+    private func displayLikeStatus(articleViewModel: ArticleViewModel) {
+        if articleViewModel.isFavorite {
+            heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            heartButton.tintColor = Colors.News.likeColor
+        } else {
+            heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            heartButton.tintColor = Colors.News.notLikeColor
+        }
     }
 }

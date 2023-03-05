@@ -12,7 +12,11 @@ final class ViewFactory : ViewFactoryProtocol {
     private init() {}
     
     func createMainTabBar() -> UITabBarController {
-        let newsController = UINavigationController(rootViewController: NewsViewController(newsViewModel: NewsViewModel(newsApi: NewsApi.shared)))
+        let newsController = UINavigationController(
+            rootViewController: NewsViewController(
+                newsViewModel: NewsViewModel(
+                    newsApi: NewsApi.shared,
+                    storage: CoreDataNewsAppStorage.shared)))
         newsController.navigationBar.prefersLargeTitles = true
         newsController.tabBarItem.title = Strings.News.title
         newsController.tabBarItem.image = UIImage(named: "NewsIcon")

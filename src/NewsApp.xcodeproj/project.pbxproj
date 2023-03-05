@@ -13,6 +13,9 @@
 		80D52B7E29B475B2008D00EE /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D52B7D29B475B2008D00EE /* UIViewControllerExtensions.swift */; };
 		80D52B8029B47996008D00EE /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D52B7F29B47996008D00EE /* ArticleTableViewCell.swift */; };
 		80D52B8329B490D0008D00EE /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D52B8229B490D0008D00EE /* ArticleViewController.swift */; };
+		80D52B8529B506BC008D00EE /* NewsAppStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D52B8429B506BC008D00EE /* NewsAppStorageProtocol.swift */; };
+		80D52B8729B50764008D00EE /* CoreDataNewsAppStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D52B8629B50764008D00EE /* CoreDataNewsAppStorage.swift */; };
+		80D52B8929B50B2A008D00EE /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D52B8829B50B2A008D00EE /* ArticleViewModel.swift */; };
 		80E4327B29B35EC2006CEBEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E4327A29B35EC2006CEBEE /* AppDelegate.swift */; };
 		80E4328529B35EC2006CEBEE /* NewsApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80E4328329B35EC2006CEBEE /* NewsApp.xcdatamodeld */; };
 		80E4328729B35EC4006CEBEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80E4328629B35EC4006CEBEE /* Assets.xcassets */; };
@@ -43,6 +46,9 @@
 		80D52B7D29B475B2008D00EE /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		80D52B7F29B47996008D00EE /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		80D52B8229B490D0008D00EE /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
+		80D52B8429B506BC008D00EE /* NewsAppStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAppStorageProtocol.swift; sourceTree = "<group>"; };
+		80D52B8629B50764008D00EE /* CoreDataNewsAppStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataNewsAppStorage.swift; sourceTree = "<group>"; };
+		80D52B8829B50B2A008D00EE /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
 		80E4327729B35EC2006CEBEE /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E4327A29B35EC2006CEBEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80E4328429B35EC2006CEBEE /* NewsApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewsApp.xcdatamodel; sourceTree = "<group>"; };
@@ -130,6 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				80E4328329B35EC2006CEBEE /* NewsApp.xcdatamodeld */,
+				80D52B8429B506BC008D00EE /* NewsAppStorageProtocol.swift */,
+				80D52B8629B50764008D00EE /* CoreDataNewsAppStorage.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -183,6 +191,7 @@
 				80E432A129B37E78006CEBEE /* NewsViewController.swift */,
 				80D52B7729B47175008D00EE /* NewsViewModel.swift */,
 				80D52B7F29B47996008D00EE /* ArticleTableViewCell.swift */,
+				80D52B8829B50B2A008D00EE /* ArticleViewModel.swift */,
 			);
 			path = NewsScreen;
 			sourceTree = "<group>";
@@ -349,11 +358,14 @@
 				80E432A929B3819B006CEBEE /* FavoritesViewController.swift in Sources */,
 				80E432C029B3C1A1006CEBEE /* AuthorizerProtocol.swift in Sources */,
 				80E432C529B3C6C9006CEBEE /* ViewFactoryProtocol.swift in Sources */,
+				80D52B8729B50764008D00EE /* CoreDataNewsAppStorage.swift in Sources */,
 				80E432AB29B381CB006CEBEE /* ProfileViewController.swift in Sources */,
 				80D52B7829B47175008D00EE /* NewsViewModel.swift in Sources */,
+				80D52B8929B50B2A008D00EE /* ArticleViewModel.swift in Sources */,
 				80E432B429B3AD46006CEBEE /* TextFieldWithPadding.swift in Sources */,
 				80D52B8329B490D0008D00EE /* ArticleViewController.swift in Sources */,
 				80E4329C29B36E47006CEBEE /* DateExtensions.swift in Sources */,
+				80D52B8529B506BC008D00EE /* NewsAppStorageProtocol.swift in Sources */,
 				80E4329929B367E1006CEBEE /* NewsApi.swift in Sources */,
 				80E432BE29B3C101006CEBEE /* StringExtensions.swift in Sources */,
 				80E432BC29B3BB39006CEBEE /* LoginViewModel.swift in Sources */,
