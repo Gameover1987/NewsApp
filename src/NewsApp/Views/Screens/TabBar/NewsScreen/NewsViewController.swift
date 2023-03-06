@@ -50,8 +50,6 @@ final class NewsViewController : UIViewController {
             make.centerX.equalTo(view.safeAreaLayoutGuide)
             make.centerY.equalTo(view.safeAreaLayoutGuide)
         }
-        
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,6 +58,8 @@ final class NewsViewController : UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
         updateVisibleCells()
+        
+        self.hideBackButtonTitle()
     }
     
     override func viewDidLoad() {

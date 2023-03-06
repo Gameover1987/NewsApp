@@ -6,7 +6,8 @@ final class Strings {
     final class AuthAndRegistration {
         static let auth = "Вход"
         static let register = "Регистрация"
-        static let resetPassword = "Сброс пароля"
+        static let resetPasswordTitle = "Сброс пароля"
+        static let resetPasswordButton = "Сбросить пароль"
     }
     
     final class News {

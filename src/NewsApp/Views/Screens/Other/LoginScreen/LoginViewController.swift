@@ -95,6 +95,8 @@ final class LoginViewController : UIViewController {
         
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        self.hideBackButtonTitle()
     }
     
     @objc

@@ -18,7 +18,7 @@ final class ResetPasswordViewController : UIViewController {
     
     private lazy var resetPasswordButton: UIButton = {
         let button = UIButton()
-        button.setTitle(Strings.AuthAndRegistration.auth, for: .normal)
+        button.setTitle(Strings.AuthAndRegistration.resetPasswordButton, for: .normal)
         button.titleLabel?.font = Fonts.forButtons
         button.backgroundColor = Colors.Common.buttonBackground
         button.layer.cornerRadius = 21
@@ -54,7 +54,7 @@ final class ResetPasswordViewController : UIViewController {
     
     private func setupUI() {
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        title = Strings.AuthAndRegistration.resetPassword
+        title = Strings.AuthAndRegistration.resetPasswordTitle
         
         view.backgroundColor = .white
         
