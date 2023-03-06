@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80CF10D329B5DD2A00C8B741 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CF10D229B5DD2A00C8B741 /* FavoritesViewModel.swift */; };
+		80CF10D529B5DF3C00C8B741 /* ArticleEntityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CF10D429B5DF3C00C8B741 /* ArticleEntityExtensions.swift */; };
+		80CF10D729B5E30E00C8B741 /* ArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CF10D629B5E30E00C8B741 /* ArticleCollectionViewCell.swift */; };
 		80D52B7829B47175008D00EE /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D52B7729B47175008D00EE /* NewsViewModel.swift */; };
 		80D52B7A29B471FA008D00EE /* NewsSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D52B7929B471FA008D00EE /* NewsSource.swift */; };
 		80D52B7C29B47221008D00EE /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D52B7B29B47221008D00EE /* Article.swift */; };
@@ -40,6 +43,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		80CF10D229B5DD2A00C8B741 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		80CF10D429B5DF3C00C8B741 /* ArticleEntityExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleEntityExtensions.swift; sourceTree = "<group>"; };
+		80CF10D629B5E30E00C8B741 /* ArticleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCollectionViewCell.swift; sourceTree = "<group>"; };
 		80D52B7729B47175008D00EE /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		80D52B7929B471FA008D00EE /* NewsSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSource.swift; sourceTree = "<group>"; };
 		80D52B7B29B47221008D00EE /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
@@ -138,6 +144,7 @@
 				80E4328329B35EC2006CEBEE /* NewsApp.xcdatamodeld */,
 				80D52B8429B506BC008D00EE /* NewsAppStorageProtocol.swift */,
 				80D52B8629B50764008D00EE /* CoreDataNewsAppStorage.swift */,
+				80CF10D429B5DF3C00C8B741 /* ArticleEntityExtensions.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -208,6 +215,8 @@
 			isa = PBXGroup;
 			children = (
 				80E432A829B3819B006CEBEE /* FavoritesViewController.swift */,
+				80CF10D229B5DD2A00C8B741 /* FavoritesViewModel.swift */,
+				80CF10D629B5E30E00C8B741 /* ArticleCollectionViewCell.swift */,
 			);
 			path = FavoritesScreen;
 			sourceTree = "<group>";
@@ -349,12 +358,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80CF10D329B5DD2A00C8B741 /* FavoritesViewModel.swift in Sources */,
 				80D52B7C29B47221008D00EE /* Article.swift in Sources */,
 				80E432B729B3B10B006CEBEE /* Fonts.swift in Sources */,
 				80D52B8029B47996008D00EE /* ArticleTableViewCell.swift in Sources */,
 				80E432B229B39BB7006CEBEE /* LoginViewController.swift in Sources */,
 				80D52B7A29B471FA008D00EE /* NewsSource.swift in Sources */,
 				80E432AD29B383AA006CEBEE /* Colors.swift in Sources */,
+				80CF10D729B5E30E00C8B741 /* ArticleCollectionViewCell.swift in Sources */,
 				80E432A929B3819B006CEBEE /* FavoritesViewController.swift in Sources */,
 				80E432C029B3C1A1006CEBEE /* AuthorizerProtocol.swift in Sources */,
 				80E432C529B3C6C9006CEBEE /* ViewFactoryProtocol.swift in Sources */,
@@ -373,6 +384,7 @@
 				80E432A229B37E78006CEBEE /* NewsViewController.swift in Sources */,
 				80E4327B29B35EC2006CEBEE /* AppDelegate.swift in Sources */,
 				80E4328529B35EC2006CEBEE /* NewsApp.xcdatamodeld in Sources */,
+				80CF10D529B5DF3C00C8B741 /* ArticleEntityExtensions.swift in Sources */,
 				80D52B7E29B475B2008D00EE /* UIViewControllerExtensions.swift in Sources */,
 				80E432AF29B38AF0006CEBEE /* Strings.swift in Sources */,
 				80E432C329B3C1FF006CEBEE /* Authorizer.swift in Sources */,

@@ -25,7 +25,10 @@ final class ViewFactory : ViewFactoryProtocol {
         mapController.tabBarItem.title = Strings.Map.title
         mapController.tabBarItem.image = UIImage(named: "MapIcon")
         
-        let favoritesController = UINavigationController(rootViewController: FavoritesViewController())
+        let favoritesController = UINavigationController(
+            rootViewController: FavoritesViewController(
+                favoritesViewModel: FavoritesViewModel(
+                    storage: CoreDataNewsAppStorage.shared)))
         favoritesController.navigationBar.prefersLargeTitles = true
         favoritesController.tabBarItem.title = Strings.Favorites.title
         favoritesController.tabBarItem.image = UIImage(named: "FavoritesIcon")
@@ -41,7 +44,7 @@ final class ViewFactory : ViewFactoryProtocol {
         tabBarController.setViewControllers(controllers, animated: false)
         tabBarController.tabBar.backgroundColor = Colors.TabBar.background
         
-        let lineView = UIView(frame: CGRect(x: 0, y: 0, width:tabBarController.tabBar.frame.size.width, height: 1))
+        let lineView = UIView(frame: CGRect(x: 0, y: 0, width:tabBarController.tabBar.frame.size.width, height: 0.5))
         lineView.backgroundColor = Colors.TabBar.borderColor
         tabBarController.tabBar.addSubview(lineView)
         

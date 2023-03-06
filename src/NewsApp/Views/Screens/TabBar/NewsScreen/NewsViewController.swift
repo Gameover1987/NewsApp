@@ -67,6 +67,12 @@ final class NewsViewController : UIViewController {
         
         activityIndicator.startAnimating()
         
+        newsViewModel.articleRemovedFromFavoritesAction = { [weak self] indexPath in
+            guard let self = self else {return}
+            guard let cell = self.tableView.cellForRow(at: indexPath) as? ArticleTableViewCell else {return}
+            let article = self.newsViewModel.articles[indexPath.row]
+            cell.update(by: article)
+        }
         newsViewModel.load { [weak self] result in
             guard let self = self else {return}
             
@@ -87,8 +93,8 @@ final class NewsViewController : UIViewController {
         guard let selectedIndexPath = tableView.indexPathForSelectedRow else {return}
         
         let article = newsViewModel.articles[selectedIndexPath.row]
-        let cell = tableView.cellForRow(at: selectedIndexPath) as! ArticleTableViewCell
-        cell.update(by: article)
+        let cell = tableView.cellForRow(at: selectedIndexPath) as? ArticleTableViewCell
+        cell?.update(by: article)
     }
 }
 
@@ -99,7 +105,7 @@ extension NewsViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedArticle = newsViewModel.articles[indexPath.row]
-        self.navigationController?.pushViewController(ArticleViewController(article: selectedArticle), animated: true)
+        self.navigationController?.pushViewController(ArticleViewController(article: selectedArticle, storage: CoreDataNewsAppStorage.shared), animated: true)
     }
 }
 

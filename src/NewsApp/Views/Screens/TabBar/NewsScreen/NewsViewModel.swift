@@ -9,9 +9,13 @@ final class NewsViewModel {
     init(newsApi: NewsApiProtocol, storage: NewsAppStorageProtocol) {
         self.newsApi = newsApi
         self.storage = storage
+        
+        storage.addObserver(self)
     }
     
     var articles: [ArticleViewModel] = []
+    
+    var articleRemovedFromFavoritesAction: ((IndexPath) -> Void)?
     
     func load(completion: @escaping ((_ result: Result<[Article], Error>) -> Void)) {
         
@@ -32,5 +36,19 @@ final class NewsViewModel {
                 }
             }
         }
+    }
+}
+
+extension NewsViewModel : NewsAppStorageObserver {
+    func didRemoveFromFavorites(title: String) {
+        if let removedIndex = articles.firstIndex(where: { article in
+            return article.title == title
+        }) {
+            articleRemovedFromFavoritesAction?(IndexPath(row: removedIndex, section: 0))
+        }
+    }
+    
+    func didAddToFavorites(article: ArticleEntity) {
+        
     }
 }

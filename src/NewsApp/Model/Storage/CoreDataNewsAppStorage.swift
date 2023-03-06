@@ -6,11 +6,13 @@ final class CoreDataNewsAppStorage : NewsAppStorageProtocol {
         
     static let shared = CoreDataNewsAppStorage()
     
-    var articles: [ArticleEntity] = []
+    private var observers: [NewsAppStorageObserver] = []
     
     private init() {
         fetchArticles()
     }
+    
+    var articles: [ArticleEntity] = []
     
     func isArticleInFavorites(title: String) -> Bool {
         let articleEntity = getByTitle(title: title)
@@ -18,7 +20,7 @@ final class CoreDataNewsAppStorage : NewsAppStorageProtocol {
         return articleEntity != nil
     }
     
-    func addToFavorites(title: String, contents: String, publishedAt: Date, urlToImage: String?) -> ArticleEntity {
+    func addToFavorites(title: String, contents: String, publishedAt: Date, urlToImage: String?) {
         let article = getOrCreateArticle(title: title,
                                           contents: contents,
                                           publishedAt: publishedAt,
@@ -28,15 +30,32 @@ final class CoreDataNewsAppStorage : NewsAppStorageProtocol {
         saveContext()
         fetchArticles()
         
-        return article
+        for observer in observers {
+            observer.didAddToFavorites(article: article)
+        }
     }
     
     func removeFromFavorites(title: String) {
         guard let articleEntity = getByTitle(title: title) else {return}
+        let title = articleEntity.title
         
         persistentContainer.viewContext.delete(articleEntity)
         saveContext()
         fetchArticles()
+        
+        for observer in observers {
+            observer.didRemoveFromFavorites(title: title!)
+        }
+    }
+    
+    func addObserver(_ observer: NewsAppStorageObserver) {
+        observers.append(observer)
+    }
+    
+    func removeObserver(_ observer: NewsAppStorageObserver) {
+        observers.removeAll { existingObserver in
+            return existingObserver === observer
+        }
     }
     
     private func getByTitle(title: String) -> ArticleEntity? {
