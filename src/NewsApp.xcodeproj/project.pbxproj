@@ -19,6 +19,8 @@
 		80D52B8529B506BC008D00EE /* NewsAppStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D52B8429B506BC008D00EE /* NewsAppStorageProtocol.swift */; };
 		80D52B8729B50764008D00EE /* CoreDataNewsAppStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D52B8629B50764008D00EE /* CoreDataNewsAppStorage.swift */; };
 		80D52B8929B50B2A008D00EE /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D52B8829B50B2A008D00EE /* ArticleViewModel.swift */; };
+		80D9B18929B667FE00860688 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9B18829B667FE00860688 /* RegistrationViewController.swift */; };
+		80D9B18B29B668E100860688 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9B18A29B668E100860688 /* RegistrationViewModel.swift */; };
 		80E4327B29B35EC2006CEBEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E4327A29B35EC2006CEBEE /* AppDelegate.swift */; };
 		80E4328529B35EC2006CEBEE /* NewsApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80E4328329B35EC2006CEBEE /* NewsApp.xcdatamodeld */; };
 		80E4328729B35EC4006CEBEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80E4328629B35EC4006CEBEE /* Assets.xcassets */; };
@@ -55,6 +57,8 @@
 		80D52B8429B506BC008D00EE /* NewsAppStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAppStorageProtocol.swift; sourceTree = "<group>"; };
 		80D52B8629B50764008D00EE /* CoreDataNewsAppStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataNewsAppStorage.swift; sourceTree = "<group>"; };
 		80D52B8829B50B2A008D00EE /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
+		80D9B18829B667FE00860688 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		80D9B18A29B668E100860688 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		80E4327729B35EC2006CEBEE /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E4327A29B35EC2006CEBEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80E4328429B35EC2006CEBEE /* NewsApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewsApp.xcdatamodel; sourceTree = "<group>"; };
@@ -97,6 +101,15 @@
 				80D52B8229B490D0008D00EE /* ArticleViewController.swift */,
 			);
 			path = ArticleScreen;
+			sourceTree = "<group>";
+		};
+		80D9B18729B667CA00860688 /* RegistrationScreen */ = {
+			isa = PBXGroup;
+			children = (
+				80D9B18829B667FE00860688 /* RegistrationViewController.swift */,
+				80D9B18A29B668E100860688 /* RegistrationViewModel.swift */,
+			);
+			path = RegistrationScreen;
 			sourceTree = "<group>";
 		};
 		80E4326E29B35EC2006CEBEE = {
@@ -270,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				80E432B029B39B75006CEBEE /* LoginScreen */,
+				80D9B18729B667CA00860688 /* RegistrationScreen */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -359,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80CF10D329B5DD2A00C8B741 /* FavoritesViewModel.swift in Sources */,
+				80D9B18B29B668E100860688 /* RegistrationViewModel.swift in Sources */,
 				80D52B7C29B47221008D00EE /* Article.swift in Sources */,
 				80E432B729B3B10B006CEBEE /* Fonts.swift in Sources */,
 				80D52B8029B47996008D00EE /* ArticleTableViewCell.swift in Sources */,
@@ -368,6 +383,7 @@
 				80CF10D729B5E30E00C8B741 /* ArticleCollectionViewCell.swift in Sources */,
 				80E432A929B3819B006CEBEE /* FavoritesViewController.swift in Sources */,
 				80E432C029B3C1A1006CEBEE /* AuthorizerProtocol.swift in Sources */,
+				80D9B18929B667FE00860688 /* RegistrationViewController.swift in Sources */,
 				80E432C529B3C6C9006CEBEE /* ViewFactoryProtocol.swift in Sources */,
 				80D52B8729B50764008D00EE /* CoreDataNewsAppStorage.swift in Sources */,
 				80E432AB29B381CB006CEBEE /* ProfileViewController.swift in Sources */,

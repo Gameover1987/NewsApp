@@ -1,7 +1,7 @@
 
 import Foundation
 
-final class LoginViewModel {
+final class RegistrationViewModel {
     
     private let authorizer: AuthorizerProtocol
     
@@ -9,14 +9,15 @@ final class LoginViewModel {
         self.authorizer = authorizer
     }
     
+    var userName: String = ""
     var email: String = ""
     var password: String = ""
     
     var okAction: (() -> Void)?
     var errorAction: ((_ error: String) -> Void)?
     
-    func authorize() {
-        if email.isEmpty || password.isEmpty {
+    func performRegistration() {
+        if userName.isEmpty || email.isEmpty || password.isEmpty {
             errorAction?("Заполните пустые поля")
             return
         }
@@ -26,8 +27,8 @@ final class LoginViewModel {
             return
         }
         
-        if !authorizer.auth(email: email, password: password) {
-            errorAction?("Указан неправильный логин или пароль")
+        if !authorizer.authWithNewUser(userName: userName, email: email, password: password) {
+            errorAction?("Пользователь с таким e-mail уже зарегистрирован")
             return
         }
         

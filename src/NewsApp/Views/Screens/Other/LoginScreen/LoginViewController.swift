@@ -29,7 +29,7 @@ final class LoginViewController : UIViewController {
     
     private lazy var loginButton: UIButton = {
         let button = UIButton()
-        button.setTitle(Strings.Auth.auth, for: .normal)
+        button.setTitle(Strings.AuthAndRegistration.auth, for: .normal)
         button.titleLabel?.font = Fonts.forButtons
         button.backgroundColor = Colors.Common.buttonBackground
         button.layer.cornerRadius = 21
@@ -49,6 +49,7 @@ final class LoginViewController : UIViewController {
         button.setTitle("Зарегистрироваться", for: .normal)
         button.setTitleColor(Colors.Common.hyperlinkButtontext, for: .normal)
         button.titleLabel?.font = Fonts.forHyperlinkButtons
+        button.addTarget(self, action: #selector(registerButtonTouch), for: .touchUpInside)
         return button
     }()
     
@@ -76,9 +77,6 @@ final class LoginViewController : UIViewController {
         setupUI()
         bindViewModel()
         
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        title = Strings.Auth.auth
-        
 #if DEBUG
         emailTextField.text = "test@mail.com"
         emailTextFieldEditingChanged()
@@ -95,34 +93,35 @@ final class LoginViewController : UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    @objc func emailTextFieldEditingChanged() {
-        loginViewModel.login = emailTextField.text!
+    @objc
+    private func emailTextFieldEditingChanged() {
+        loginViewModel.email = emailTextField.text!
     }
     
-    @objc func passwordTextFieldEditingChanged() {
+    @objc
+    private func passwordTextFieldEditingChanged() {
         loginViewModel.password = passwordTextField.text!
     }
     
-    @objc func loginButtonTouch() {
+    @objc
+    private func loginButtonTouch() {
         loginViewModel.authorize()
     }
     
-    private func bindViewModel() {
-        loginViewModel.okAction = { [weak self] in
-            guard let self = self else {return}
-            
-            self.navigationController?.pushViewController(self.viewFactory.createMainTabBar(), animated: true)
-            self.navigationController?.navigationBar.isHidden = true
-        }
-        
-        loginViewModel.errorAction = { error in
-            print(error)
-        }
+    @objc
+    private func registerButtonTouch() {
+        self.navigationController?.pushViewController(RegistrationViewController(
+            registrationViewModel: RegistrationViewModel(authorizer: Authorizer.shared),
+            viewFactory: self.viewFactory), animated: true)
     }
     
     private func setupUI() {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        title = Strings.AuthAndRegistration.auth
+        
         view.backgroundColor = .white
         
         view.addSubview(emailTextField)
@@ -158,6 +157,19 @@ final class LoginViewController : UIViewController {
         resetPasswordButton.snp.makeConstraints { make in
             make.centerX.equalTo(view.safeAreaLayoutGuide)
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(30)
+        }
+    }
+    
+    private func bindViewModel() {
+        loginViewModel.okAction = { [weak self] in
+            guard let self = self else {return}
+            
+            self.navigationController?.pushViewController(self.viewFactory.createMainTabBar(), animated: true)
+            self.navigationController?.navigationBar.isHidden = true
+        }
+        
+        loginViewModel.errorAction = { [weak self] error in
+            self?.showErrorMessage(title: "Ошибка", message: error, actionHandler: nil)
         }
     }
 }

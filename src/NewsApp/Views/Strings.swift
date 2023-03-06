@@ -3,8 +3,9 @@ import Foundation
 
 final class Strings {
     
-    final class Auth {
+    final class AuthAndRegistration {
         static let auth = "Вход"
+        static let register = "Регистрация"
     }
     
     final class News {

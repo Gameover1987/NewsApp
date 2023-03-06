@@ -3,21 +3,31 @@ import Foundation
 import CoreData
 
 final class CoreDataNewsAppStorage : NewsAppStorageProtocol {
-        
+    
     static let shared = CoreDataNewsAppStorage()
     
     private var observers: [NewsAppStorageObserver] = []
     
     private init() {
         fetchArticles()
+        fetchUsers()
+        
+        #if DEBUG
+        addUser(userName: "TestUser", email: "test@mail.com", password: "12345")
+        #endif
     }
     
     var articles: [ArticleEntity] = []
+    var users: [UserEntity] = []
     
     func isArticleInFavorites(title: String) -> Bool {
         let articleEntity = getByTitle(title: title)
-        
         return articleEntity != nil
+    }
+    
+    func isEmailRegistered(_ email: String) -> Bool {
+        let userEntity = getByEmail(email: email)
+        return userEntity != nil
     }
     
     func addToFavorites(title: String, contents: String, publishedAt: Date, urlToImage: String?) {
@@ -58,12 +68,38 @@ final class CoreDataNewsAppStorage : NewsAppStorageProtocol {
         }
     }
     
+    func addUser(userName: String, email: String, password: String) {
+        let user = getOrCreateUser(userName: userName,
+                                   email: email,
+                                   password: password,
+                                   in: persistentContainer.viewContext)
+        
+        saveContext()
+        fetchUsers()
+    }
+    
+    func checkUser(email: String, password: String) -> Bool {
+        let request = UserEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "email == %@", email)
+        guard let userEntity = (try? persistentContainer.viewContext.fetch(request))?.first else {return false}
+        
+        return userEntity.password == password
+    }
+    
     private func getByTitle(title: String) -> ArticleEntity? {
         let request = ArticleEntity.fetchRequest()
         request.predicate = NSPredicate(format: "title == %@", title)
         
         let articleEntity = (try? persistentContainer.viewContext.fetch(request))?.first
         return articleEntity
+    }
+    
+    private func getByEmail(email: String) -> UserEntity? {
+        let request = UserEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "email == %@", email)
+        
+        let userEntity = (try? persistentContainer.viewContext.fetch(request))?.first
+        return userEntity
     }
     
     private func fetchArticles() {
@@ -74,6 +110,16 @@ final class CoreDataNewsAppStorage : NewsAppStorageProtocol {
             NSSortDescriptor(key: "title", ascending: true)
             ]
             articles = try persistentContainer.viewContext.fetch(request)
+        } catch {
+            print(error)
+        }
+    }
+    
+    private func fetchUsers() {
+        let request = UserEntity.fetchRequest()
+        do {
+            request.sortDescriptors = [NSSortDescriptor(key: "email", ascending: true)]
+            users = try persistentContainer.viewContext.fetch(request)
         } catch {
             print(error)
         }
@@ -94,6 +140,23 @@ final class CoreDataNewsAppStorage : NewsAppStorageProtocol {
             articleEntity.urlToImage = urlToImage
             
             return articleEntity
+        }
+    }
+    
+    private func getOrCreateUser(userName: String, email: String, password: String, in context: NSManagedObjectContext) -> UserEntity {
+        let request = UserEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "email == %@", email)
+        
+        if let userEntity = (try? context.fetch(request))?.first {
+            return userEntity
+        }
+        else {
+            let userEntity = UserEntity(context: context)
+            userEntity.userName = userName
+            userEntity.email = email
+            userEntity.password = password
+            
+            return userEntity
         }
     }
     
