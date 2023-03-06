@@ -16,10 +16,17 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func showErrorMessage(title: String, message: String, actionHandler: (() -> Void)?) {
+    func showMessage(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showMessage(title: String, message: String, after actionHandler: @escaping(() -> Void)) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ок", style: .default, handler: { (action:UIAlertAction) in
-            actionHandler?()
+            actionHandler()
         }))
         
         self.present(alert, animated: true, completion: nil)

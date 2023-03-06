@@ -21,6 +21,8 @@
 		80D52B8929B50B2A008D00EE /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D52B8829B50B2A008D00EE /* ArticleViewModel.swift */; };
 		80D9B18929B667FE00860688 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9B18829B667FE00860688 /* RegistrationViewController.swift */; };
 		80D9B18B29B668E100860688 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9B18A29B668E100860688 /* RegistrationViewModel.swift */; };
+		80D9B18E29B67C4E00860688 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9B18D29B67C4E00860688 /* ResetPasswordViewController.swift */; };
+		80D9B19029B67DED00860688 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9B18F29B67DED00860688 /* ResetPasswordViewModel.swift */; };
 		80E4327B29B35EC2006CEBEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E4327A29B35EC2006CEBEE /* AppDelegate.swift */; };
 		80E4328529B35EC2006CEBEE /* NewsApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80E4328329B35EC2006CEBEE /* NewsApp.xcdatamodeld */; };
 		80E4328729B35EC4006CEBEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80E4328629B35EC4006CEBEE /* Assets.xcassets */; };
@@ -59,6 +61,8 @@
 		80D52B8829B50B2A008D00EE /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
 		80D9B18829B667FE00860688 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		80D9B18A29B668E100860688 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		80D9B18D29B67C4E00860688 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		80D9B18F29B67DED00860688 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		80E4327729B35EC2006CEBEE /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80E4327A29B35EC2006CEBEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80E4328429B35EC2006CEBEE /* NewsApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewsApp.xcdatamodel; sourceTree = "<group>"; };
@@ -110,6 +114,15 @@
 				80D9B18A29B668E100860688 /* RegistrationViewModel.swift */,
 			);
 			path = RegistrationScreen;
+			sourceTree = "<group>";
+		};
+		80D9B18C29B67C2900860688 /* ResetPasswordScreen */ = {
+			isa = PBXGroup;
+			children = (
+				80D9B18D29B67C4E00860688 /* ResetPasswordViewController.swift */,
+				80D9B18F29B67DED00860688 /* ResetPasswordViewModel.swift */,
+			);
+			path = ResetPasswordScreen;
 			sourceTree = "<group>";
 		};
 		80E4326E29B35EC2006CEBEE = {
@@ -284,6 +297,7 @@
 			children = (
 				80E432B029B39B75006CEBEE /* LoginScreen */,
 				80D9B18729B667CA00860688 /* RegistrationScreen */,
+				80D9B18C29B67C2900860688 /* ResetPasswordScreen */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -391,6 +405,8 @@
 				80D52B8929B50B2A008D00EE /* ArticleViewModel.swift in Sources */,
 				80E432B429B3AD46006CEBEE /* TextFieldWithPadding.swift in Sources */,
 				80D52B8329B490D0008D00EE /* ArticleViewController.swift in Sources */,
+				80D9B18E29B67C4E00860688 /* ResetPasswordViewController.swift in Sources */,
+				80D9B19029B67DED00860688 /* ResetPasswordViewModel.swift in Sources */,
 				80E4329C29B36E47006CEBEE /* DateExtensions.swift in Sources */,
 				80D52B8529B506BC008D00EE /* NewsAppStorageProtocol.swift in Sources */,
 				80E4329929B367E1006CEBEE /* NewsApi.swift in Sources */,

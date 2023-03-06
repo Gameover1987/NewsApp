@@ -80,7 +80,7 @@ final class NewsViewController : UIViewController {
             
             switch result {
             case .failure(let error):
-                self.showErrorMessage(title: "Ошибка", message: error.localizedDescription, actionHandler: nil)
+                self.showMessage(title: "Ошибка", message: error.localizedDescription)
             case .success(_):
                 self.tableView.reloadData()
             }

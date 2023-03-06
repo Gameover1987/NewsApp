@@ -129,7 +129,7 @@ final class RegistrationViewController : UIViewController {
         }
         
         registrationViewModel.errorAction = { [weak self] error in
-            self?.showErrorMessage(title: "Ошибка", message: error, actionHandler: nil)
+            self?.showMessage(title: "Ошибка", message: error)
         }
     }
 }

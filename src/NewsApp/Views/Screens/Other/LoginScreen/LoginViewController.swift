@@ -58,6 +58,7 @@ final class LoginViewController : UIViewController {
         button.setTitle("Сбросить пароль", for: .normal)
         button.setTitleColor(Colors.Common.hyperlinkButtontext, for: .normal)
         button.titleLabel?.font = Fonts.forHyperlinkButtons
+        button.addTarget(self, action: #selector(resetPassswordButtonTouch), for: .touchUpInside)
         return button
     }()
     
@@ -118,6 +119,11 @@ final class LoginViewController : UIViewController {
             viewFactory: self.viewFactory), animated: true)
     }
     
+    @objc
+    private func resetPassswordButtonTouch() {
+        self.navigationController?.pushViewController(ResetPasswordViewController(resetPasswordViewModel: ResetPasswordViewModel()), animated: true)
+    }
+    
     private func setupUI() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         title = Strings.AuthAndRegistration.auth
@@ -169,7 +175,7 @@ final class LoginViewController : UIViewController {
         }
         
         loginViewModel.errorAction = { [weak self] error in
-            self?.showErrorMessage(title: "Ошибка", message: error, actionHandler: nil)
+            self?.showMessage(title: "Ошибка", message: error)
         }
     }
 }
