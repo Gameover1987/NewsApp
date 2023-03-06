@@ -78,12 +78,16 @@ final class CoreDataNewsAppStorage : NewsAppStorageProtocol {
         fetchUsers()
     }
     
-    func checkUser(email: String, password: String) -> Bool {
+    func getUserByEmailAndPassword(email: String, password: String) -> UserEntity? {
         let request = UserEntity.fetchRequest()
         request.predicate = NSPredicate(format: "email == %@", email)
-        guard let userEntity = (try? persistentContainer.viewContext.fetch(request))?.first else {return false}
+        guard let userEntity = (try? persistentContainer.viewContext.fetch(request))?.first else {return nil}
         
-        return userEntity.password == password
+        if userEntity.password != password {
+            return nil
+        }
+        
+        return userEntity
     }
     
     private func getByTitle(title: String) -> ArticleEntity? {

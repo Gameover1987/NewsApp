@@ -6,12 +6,20 @@ final class Authorizer : AuthorizerProtocol {
     
     private let storage: NewsAppStorageProtocol
     
+    private var authorizedUser: UserEntity?
+    
     private init(storage: NewsAppStorageProtocol) {
         self.storage = storage
     }
     
+    var user: UserEntity? {
+        return authorizedUser
+    }
+    
     func auth(email: String, password: String) -> Bool {
-        return storage.checkUser(email: email, password: password)
+        authorizedUser = storage.getUserByEmailAndPassword(email: email, password: password)
+     
+        return authorizedUser != nil
     }
     
     func authWithNewUser(userName: String, email: String, password: String) -> Bool {

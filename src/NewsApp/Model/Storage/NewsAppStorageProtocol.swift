@@ -19,7 +19,7 @@ protocol NewsAppStorageProtocol {
     
     func addUser(userName: String, email: String, password: String)
     
-    func checkUser(email: String, password: String) -> Bool
+    func getUserByEmailAndPassword(email: String, password: String) -> UserEntity?
 }
 
 protocol NewsAppStorageObserver : AnyObject {
