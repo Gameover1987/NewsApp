@@ -105,7 +105,7 @@ extension NewsViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedArticle = newsViewModel.articles[indexPath.row]
-        self.navigationController?.pushViewController(ArticleViewController(article: selectedArticle, storage: CoreDataNewsAppStorage.shared), animated: true)
+        self.navigationController?.pushViewController(ArticleViewController(article: selectedArticle), animated: true)
     }
 }
 

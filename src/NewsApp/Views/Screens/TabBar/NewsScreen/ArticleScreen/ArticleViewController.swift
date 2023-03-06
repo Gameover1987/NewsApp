@@ -5,7 +5,6 @@ import SnapKit
 final class ArticleViewController : UIViewController {
     
     private let article: ArticleViewModel
-    private let storage: NewsAppStorageProtocol
     
     private lazy var articleImage: UIImageView = {
         let imageView = UIImageView()
@@ -43,9 +42,8 @@ final class ArticleViewController : UIViewController {
         return label
     }()
     
-    init(article: ArticleViewModel, storage: NewsAppStorageProtocol ) {
+    init(article: ArticleViewModel) {
         self.article = article
-        self.storage = storage
         super.init(nibName: nil, bundle: nil)
     }
     

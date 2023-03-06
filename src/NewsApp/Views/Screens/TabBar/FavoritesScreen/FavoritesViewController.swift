@@ -68,7 +68,10 @@ extension FavoritesViewController : UICollectionViewDelegateFlowLayout {
 }
 
 extension FavoritesViewController : UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedArticle = favoritesViewModel.articles[indexPath.row]
+        self.navigationController?.pushViewController(ArticleViewController(article: selectedArticle), animated: true)
+    }
 }
 
 extension FavoritesViewController : UICollectionViewDataSource {
