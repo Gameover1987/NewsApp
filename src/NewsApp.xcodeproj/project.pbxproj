@@ -19,6 +19,7 @@
 		80D52B8529B506BC008D00EE /* NewsAppStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D52B8429B506BC008D00EE /* NewsAppStorageProtocol.swift */; };
 		80D52B8729B50764008D00EE /* CoreDataNewsAppStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D52B8629B50764008D00EE /* CoreDataNewsAppStorage.swift */; };
 		80D52B8929B50B2A008D00EE /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D52B8829B50B2A008D00EE /* ArticleViewModel.swift */; };
+		80D759E129B79C4700E9E6E7 /* MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D759E029B79C4700E9E6E7 /* MapAnnotation.swift */; };
 		80D9B18929B667FE00860688 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9B18829B667FE00860688 /* RegistrationViewController.swift */; };
 		80D9B18B29B668E100860688 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9B18A29B668E100860688 /* RegistrationViewModel.swift */; };
 		80D9B18E29B67C4E00860688 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D9B18D29B67C4E00860688 /* ResetPasswordViewController.swift */; };
@@ -59,6 +60,7 @@
 		80D52B8429B506BC008D00EE /* NewsAppStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAppStorageProtocol.swift; sourceTree = "<group>"; };
 		80D52B8629B50764008D00EE /* CoreDataNewsAppStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataNewsAppStorage.swift; sourceTree = "<group>"; };
 		80D52B8829B50B2A008D00EE /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
+		80D759E029B79C4700E9E6E7 /* MapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotation.swift; sourceTree = "<group>"; };
 		80D9B18829B667FE00860688 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		80D9B18A29B668E100860688 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		80D9B18D29B67C4E00860688 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				80E432A629B38161006CEBEE /* MapViewController.swift */,
+				80D759E029B79C4700E9E6E7 /* MapAnnotation.swift */,
 			);
 			path = MapScreen;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				80CF10D729B5E30E00C8B741 /* ArticleCollectionViewCell.swift in Sources */,
 				80E432A929B3819B006CEBEE /* FavoritesViewController.swift in Sources */,
 				80E432C029B3C1A1006CEBEE /* AuthorizerProtocol.swift in Sources */,
+				80D759E129B79C4700E9E6E7 /* MapAnnotation.swift in Sources */,
 				80D9B18929B667FE00860688 /* RegistrationViewController.swift in Sources */,
 				80E432C529B3C6C9006CEBEE /* ViewFactoryProtocol.swift in Sources */,
 				80D52B8729B50764008D00EE /* CoreDataNewsAppStorage.swift in Sources */,

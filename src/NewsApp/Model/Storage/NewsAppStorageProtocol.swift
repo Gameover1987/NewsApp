@@ -17,7 +17,7 @@ protocol NewsAppStorageProtocol {
     
     func removeObserver(_ observer: any NewsAppStorageObserver)
     
-    func addUser(userName: String, email: String, password: String)
+    func addUser(userName: String, email: String, password: String) -> UserEntity
     
     func getUserByEmailAndPassword(email: String, password: String) -> UserEntity?
 }

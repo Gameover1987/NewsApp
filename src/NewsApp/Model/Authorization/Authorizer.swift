@@ -27,7 +27,7 @@ final class Authorizer : AuthorizerProtocol {
             return false
         }
         
-        storage.addUser(userName: userName, email: email, password: password)
+        authorizedUser = storage.addUser(userName: userName, email: email, password: password)
         return true
     }
 }

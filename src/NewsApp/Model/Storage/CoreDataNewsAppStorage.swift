@@ -68,7 +68,7 @@ final class CoreDataNewsAppStorage : NewsAppStorageProtocol {
         }
     }
     
-    func addUser(userName: String, email: String, password: String) {
+    func addUser(userName: String, email: String, password: String) -> UserEntity {
         let user = getOrCreateUser(userName: userName,
                                    email: email,
                                    password: password,
@@ -76,6 +76,8 @@ final class CoreDataNewsAppStorage : NewsAppStorageProtocol {
         
         saveContext()
         fetchUsers()
+        
+        return user
     }
     
     func getUserByEmailAndPassword(email: String, password: String) -> UserEntity? {
