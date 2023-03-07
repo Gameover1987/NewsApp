@@ -110,8 +110,7 @@ final class CoreDataNewsAppStorage : NewsAppStorageProtocol {
         let request = ArticleEntity.fetchRequest()
         do {
             request.sortDescriptors = [
-            NSSortDescriptor(key: "publishedAt", ascending: false),
-            NSSortDescriptor(key: "title", ascending: true)
+            NSSortDescriptor(key: "addedAt", ascending: false)
             ]
             articles = try persistentContainer.viewContext.fetch(request)
         } catch {
@@ -142,6 +141,7 @@ final class CoreDataNewsAppStorage : NewsAppStorageProtocol {
             articleEntity.contents = contents
             articleEntity.publishedAt = publishedAt
             articleEntity.urlToImage = urlToImage
+            articleEntity.addedAt = Date()
             
             return articleEntity
         }

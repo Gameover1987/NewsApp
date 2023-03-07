@@ -33,7 +33,7 @@ extension FavoritesViewModel : NewsAppStorageObserver {
     
     func didAddToFavorites(article: ArticleEntity) {
         let articleViewModel = ArticleViewModel(article: article.toArticle(), storage: self.storage)
-        self.articles.append(articleViewModel)
+        self.articles.insert(articleViewModel, at: 0)
         
         articleAddedToFavoritesAction?(articleViewModel)
     }  
